@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.mechanisms.ProgrammingBoard1;
+import org.firstinspires.ftc.teamcode.Libraries.ProgrammingBoard1;
 
 @TeleOp()
 public class TouchSensorOpMode extends OpMode{
