@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.mechanisms.ProgrammingBoard1;
 
@@ -19,6 +20,13 @@ public class TouchSensorOpMode extends OpMode{
             }
             else {
                 board.setMotorSpeed(0.0);
+            }
+            if(gamepad1.aWasPressed()){
+                board.setServoDirection(Servo.Direction.FORWARD);
+                board.setServoPosition(1);
+            }
+            if(gamepad1.bWasPressed()){
+                board.setServoPosition(0);
             }
             telemetry.addData("Touch sensor", board.getTouchSensorState());
             telemetry.addData("Is the touch sensor released", board.getReleased());

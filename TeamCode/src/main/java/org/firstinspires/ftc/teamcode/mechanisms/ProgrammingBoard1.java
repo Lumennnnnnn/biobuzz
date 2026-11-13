@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.mechanisms;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.LED;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 
 public class ProgrammingBoard1 {
@@ -9,6 +10,7 @@ public class ProgrammingBoard1 {
     private LED led;
     private DcMotor motor;
      private double ticksPerRotation;
+     private Servo servo;
 
 
     public void init(HardwareMap hwMap){
@@ -16,9 +18,10 @@ public class ProgrammingBoard1 {
         touchSensor=hwMap.get(TouchSensor.class,"touch_sensor");
         led = hwMap.get(LED.class, "led3");
         motor = hwMap.get(DcMotor.class, "motor");
-         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-         ticksPerRotation = motor.getMotorType().getTicksPerRev();
-         motor.getPower();
+        servo = hwMap.get(Servo.class, "servo");
+        motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        ticksPerRotation = motor.getMotorType().getTicksPerRev();
+        motor.getPower();
 
     }
 
@@ -39,6 +42,10 @@ public class ProgrammingBoard1 {
     }
     public void setMotorSpeed(double speed){
         motor.setPower(speed);
+    }
+    public void setServoDirection(Servo.Direction direction){servo.setDirection(direction);}
+    public void setServoPosition(double position){
+        servo.setPosition(position);
     }
     public double getMotorRotations(){
              return motor.getCurrentPosition() / ticksPerRotation;
