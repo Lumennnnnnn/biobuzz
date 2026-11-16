@@ -16,9 +16,6 @@ public class XWing extends OpMode {
     }
 
     @Override
-    public void start() {}
-
-    @Override
     public void loop() {
         //Driving----------------
         double y = gamepad1.left_stick_y / 2;   // Forward/back
