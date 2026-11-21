@@ -20,7 +20,7 @@ public class XWing extends OpMode {
         //Driving----------------
         double y = -gamepad1.left_stick_y / 2;   // Forward/back
         double x = gamepad1.left_stick_x / 2;    // Strafe
-        double rx = -gamepad1.right_stick_x / 2;  // Turn
+        double rx = gamepad1.right_stick_x / 2;  // Turn
 
 
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1); //Math

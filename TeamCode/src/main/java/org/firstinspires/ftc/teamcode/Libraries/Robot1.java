@@ -29,7 +29,7 @@ public class Robot1 {
                 RevHubOrientationOnRobot.UsbFacingDirection.FORWARD));
         IMU.initialize(parameters);
         BackRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        BackLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        FrontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void resetIMU() {
