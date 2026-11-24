@@ -15,6 +15,12 @@ public class XWing extends OpMode {
     private Follower follower;
 
     @Override
+    public void start() {
+        follower.setPose(Constants.lastPose);
+        follower.update();
+    }
+
+    @Override
     public void init() {
         robot.init(hardwareMap);
         follower = Constants.create(hardwareMap);
@@ -30,10 +36,10 @@ public class XWing extends OpMode {
                 follower.pose().heading()
         );
 
-        ManualDrive.driveOrHold(follower, powers);
+        follower.manual(powers);
         follower.update();
     }
-    
+
     @Override
     public void stop() {
         telemetry.addLine("Stopped");
