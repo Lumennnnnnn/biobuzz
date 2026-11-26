@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode.Auto;
 
+import com.bylazar.configurables.annotations.IgnoreConfigurable;
+import com.bylazar.telemetry.PanelsTelemetry;
+import com.bylazar.telemetry.TelemetryManager;
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.ivy.Command;
@@ -21,6 +24,10 @@ import org.firstinspires.ftc.teamcode.pedro.Constants;
 public class ParkAuto extends OpMode {
     private Follower follower;
     private final PoseFactory poseFactory = PoseFactory.degrees();
+    @IgnoreConfigurable
+    static TelemetryManager telemetryM;
+
+    private final TelemetryManager panelsTelemetry = PanelsTelemetry.INSTANCE.getTelemetry();
 
     // Poses
     private final Pose startPose = poseFactory.of(24, 24, 0);
@@ -65,10 +72,10 @@ public class ParkAuto extends OpMode {
         // add your other methods needed in the loop here
         Constants.lastPose = follower.pose();
 
-        telemetry.addData("X", follower.pose().x());
-        telemetry.addData("Y", follower.pose().y());
-        telemetry.addData("Heading", Math.toDegrees(follower.pose().heading()));
-        telemetry.addData("Follower Mode", follower.mode());
-        telemetry.update();
+        panelsTelemetry.addData("X", follower.pose().x());
+        panelsTelemetry.addData("Y", follower.pose().y());
+        panelsTelemetry.addData("Heading", Math.toDegrees(follower.pose().heading()));
+        panelsTelemetry.addData("Follower Mode", follower.mode());
+        panelsTelemetry.update();
     }
 }
