@@ -6,6 +6,7 @@ import com.pedropathing.follower.ManualDrive;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.Libraries.Drawing;
 import org.firstinspires.ftc.teamcode.Libraries.Robot1;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 
@@ -24,7 +25,9 @@ public class XWing extends OpMode {
     public void init() {
         robot.init(hardwareMap);
         follower = Constants.create(hardwareMap);
+        Drawing.init();
         telemetry.update();
+
     }
 
     @Override
@@ -38,6 +41,7 @@ public class XWing extends OpMode {
 
         follower.manual(powers);
         follower.update();
+        Drawing.drawDebug(follower);
     }
 
     @Override

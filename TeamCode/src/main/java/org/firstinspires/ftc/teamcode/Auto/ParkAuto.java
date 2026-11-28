@@ -18,6 +18,7 @@ import static com.pedropathing.ivy.Scheduler.schedule;
 import static com.pedropathing.ivy.groups.Groups.sequential;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 
+import org.firstinspires.ftc.teamcode.Libraries.Drawing;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 
 @Autonomous(name = "ParkAuto", group = "Auto")
@@ -53,6 +54,7 @@ public class ParkAuto extends OpMode {
         follower = Constants.create(hardwareMap);
         follower.setPose(startPose);
         follower.update();
+        Drawing.init();
     }
 
     @Override
@@ -72,5 +74,6 @@ public class ParkAuto extends OpMode {
         panelsTelemetry.addData("Heading", Math.toDegrees(follower.pose().heading()));
         panelsTelemetry.addData("Follower Mode", follower.mode());
         panelsTelemetry.update();
+        Drawing.drawDebug(follower);
     }
 }
