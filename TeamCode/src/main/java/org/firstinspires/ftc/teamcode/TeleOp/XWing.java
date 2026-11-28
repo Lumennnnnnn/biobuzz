@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
+import com.bylazar.telemetry.PanelsTelemetry;
+import com.bylazar.telemetry.TelemetryManager;
 import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.follower.ManualDrive;
@@ -15,6 +17,8 @@ public class XWing extends OpMode {
     Robot1 robot = new Robot1();
     private Follower follower;
 
+    private final TelemetryManager panelsTelemetry = PanelsTelemetry.INSTANCE.getTelemetry();
+
     @Override
     public void start() {
         follower.setPose(Constants.lastPose);
@@ -26,7 +30,7 @@ public class XWing extends OpMode {
         robot.init(hardwareMap);
         follower = Constants.create(hardwareMap);
         Drawing.init();
-        telemetry.update();
+        panelsTelemetry.update();
 
     }
 
@@ -38,6 +42,10 @@ public class XWing extends OpMode {
                 -gamepad1.right_stick_x,
                 follower.pose().heading()
         );
+        panelsTelemetry.addData("X", follower.pose().x());
+        panelsTelemetry.addData("Y", follower.pose().y());
+        panelsTelemetry.addData("Heading", Math.toDegrees(follower.pose().heading()));
+        panelsTelemetry.update();
 
         follower.manual(powers);
         follower.update();
@@ -46,8 +54,7 @@ public class XWing extends OpMode {
 
     @Override
     public void stop() {
-        telemetry.addLine("Stopped");
-        telemetry.update();
+        panelsTelemetry.update();
     }
 
 }
